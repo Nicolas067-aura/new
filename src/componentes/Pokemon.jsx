@@ -4,7 +4,7 @@ import viteLogo from "../assets/vite.svg";
 
 function Pokemon() {
   const { data: poke, loading, error } = useFetch(
-    "https://pokeapi.co/api/v2/pokemon/Pikachu",
+    "https://pokeapi.co/api/v2/pokemon/Rayquaza",
   );
 
   if (loading) return <div id="docs">Carregando...</div>;

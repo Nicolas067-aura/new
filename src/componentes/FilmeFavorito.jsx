@@ -2,7 +2,7 @@ import useFetch from "../hooks/useFetch";
 
 function FilmeFavorito() {
   const { data: filme, loading, error } = useFetch(
-    "https://www.omdbapi.com/?t=Jurassic+Park&apikey=59ab1eb9",
+    "https://www.omdbapi.com/?t=Spider-Man+2&y=2004&apikey=59ab1eb9",
   );
 
   if (loading) return <div id="social">Carregando...</div>;
