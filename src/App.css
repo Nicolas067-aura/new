@@ -209,7 +209,7 @@
   }
 }
 
-.arvore ul > li > .etapa::before {
+.arvore ul > li::before {
   content: '↓';
   color: var(--accent);
 }
@@ -223,13 +223,8 @@
     flex-direction: column;
   }
 
-  .arvore ul > li > .etapa {
-    flex-direction: row;
-    gap: var(--espaco-p);
-
-    &::before {
-      content: '→';
-    }
+  .arvore ul > li::before {
+    content: '→';
   }
 }
 

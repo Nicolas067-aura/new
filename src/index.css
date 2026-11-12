@@ -22,7 +22,7 @@
 
   font: 100%/145% var(--sans);
   letter-spacing: 0.01em;
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -35,23 +35,39 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 0.6rem 0.9rem -0.2rem, rgba(0, 0, 0, 0.25) 0 0.25rem 0.4rem -0.1rem;
-  }
+:root[data-theme="dark"] {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 0.6rem 0.9rem -0.2rem, rgba(0, 0, 0, 0.25) 0 0.25rem 0.4rem -0.1rem;
+  color-scheme: dark;
 
   .social-links .button-icon {
     filter: invert(1) brightness(2);
+  }
+}
+
+.theme-button {
+  align-self: flex-end;
+  margin: var(--espaco-p) var(--espaco-m);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.4em 0.9em;
+  border-radius: var(--raio);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  background: var(--social-bg);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow);
   }
 }
 
