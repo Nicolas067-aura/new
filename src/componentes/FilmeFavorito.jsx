@@ -1,24 +1,27 @@
 import useFetch from "../hooks/useFetch";
+import Card from "./Card";
 
 function FilmeFavorito() {
   const { data: filme, loading, error } = useFetch(
-    "https://www.omdbapi.com/?t=Spider-Man+2&y=2004&apikey=59ab1eb9",
+    "https://www.omdbapi.com/?t=Interstellar&apikey=59ab1eb9",
   );
 
-  if (loading) return <div id="social">Carregando...</div>;
-  if (error) return <div id="social">Ocorreu um erro inesperado</div>;
+  if (loading) return <div id="social" className="status carregando">Carregando...</div>;
+  if (error) return <div id="social" className="status erro">Ocorreu um erro inesperado</div>;
 
   return (
     <div id="social">
-      <h2>Meu filme favorito é: {filme.Title}</h2>
-      <img
-        src={filme.Poster}
-        className="base"
-        width="170"
-        height="179"
-        alt={filme.Title}
+      <h2>Meu filme favorito</h2>
+      <Card
+        title={filme.Title}
+        mediaUrl={filme.Poster}
+        tags={filme.Genre ? filme.Genre.split(", ") : []}
+        metadata={[
+          { label: "Ano", value: filme.Year },
+          { label: "Nota IMDB", value: filme.imdbRating },
+        ]}
+        cor="#1e3a8a"
       />
-      <p>Nota do IMDB: {filme.imdbRating}</p>
     </div>
   );
 }

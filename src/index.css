@@ -9,14 +9,19 @@
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(0, 0, 0, 0.1) 0 0.6rem 0.9rem -0.2rem, rgba(0, 0, 0, 0.05) 0 0.25rem 0.4rem -0.1rem;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  --espaco-p: 0.5rem;
+  --espaco-m: 1.25rem;
+  --espaco-g: 2rem;
+  --raio: 0.4rem;
+
+  font: 100%/145% var(--sans);
+  letter-spacing: 0.01em;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -25,8 +30,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  @media (min-width: 64rem) {
+    font-size: 112.5%;
   }
 }
 
@@ -42,7 +47,7 @@
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      rgba(0, 0, 0, 0.4) 0 0.6rem 0.9rem -0.2rem, rgba(0, 0, 0, 0.25) 0 0.25rem 0.4rem -0.1rem;
   }
 
   .social-links .button-icon {
@@ -55,42 +60,58 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  @media (min-width: 64rem) {
+    max-width: 70rem;
+    border-inline: 1px solid var(--border);
+  }
+
+  @media (min-width: 120rem) {
+    max-width: 90rem;
+  }
+}
+
+img {
+  max-width: 100%;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin: var(--espaco-m) 0;
+
+  @media (min-width: 64rem) {
+    margin: var(--espaco-g) 0;
   }
 }
+
 h2 {
-  font-size: 24px;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--espaco-p);
 }
+
+h3 {
+  font-size: 1.15rem;
+  margin: var(--espaco-p) 0;
+}
+
 p {
   margin: 0;
 }
@@ -99,13 +120,13 @@ code,
 .counter {
   font-family: var(--mono);
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   color: var(--text-h);
 }
 
 code {
-  font-size: 15px;
+  font-size: 0.85em;
   line-height: 135%;
-  padding: 4px 8px;
+  padding: 0.25em 0.5em;
   background: var(--code-bg);
 }

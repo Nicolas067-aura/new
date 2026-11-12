@@ -3,26 +3,35 @@ import axios from "axios";
 
 // Hook reutilizável: busca os dados de uma URL e controla loading/erro
 function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [resposta, setResposta] = useState({ url: null, data: null, error: false });
 
   useEffect(() => {
+    if (!url) return;
+    let cancelado = false;
+
     const getData = async () => {
       try {
         const response = await axios.get(url);
-        setData(response.data);
+        if (!cancelado) setResposta({ url, data: response.data, error: false });
       } catch (error) {
-        setError(true);
         console.log("Error: ", error);
-      } finally {
-        setLoading(false);
+        if (!cancelado) setResposta({ url, data: null, error: true });
       }
     };
     getData();
+
+    return () => {
+      cancelado = true;
+    };
   }, [url]);
 
-  return { data, loading, error };
+  const loading = url !== null && resposta.url !== url;
+
+  return {
+    data: loading ? null : resposta.data,
+    loading,
+    error: loading ? false : resposta.error,
+  };
 }
 
 export default useFetch;

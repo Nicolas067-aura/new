@@ -1,5 +1,4 @@
 import "./App.css";
-import Header from "./componentes/Header";
 import Perfil from "./componentes/Perfil";
 import Pokemon from "./componentes/Pokemon";
 import FilmeFavorito from "./componentes/FilmeFavorito";
